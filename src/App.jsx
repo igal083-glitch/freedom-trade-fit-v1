@@ -1,59 +1,51 @@
 const stocks = [
-  {
-    ticker: "UUUU",
-    name: "Energy Fuels",
-    color: "yellow",
-    score: 67,
-    setup: "Building base",
-    why: "יש עניין בסקטור, אבל צריך פריצה עם ווליום",
-  },
-  {
-    ticker: "FOSL",
-    name: "Fossil Group",
-    color: "green",
-    score: 84,
-    setup: "Pullback continuation",
-    why: "מבנה חי, תיקון מסודר, מתאים לקמפיין",
-  },
-  {
-    ticker: "NVAX",
-    name: "Novavax",
-    color: "yellow",
-    score: 61,
-    setup: "Watchlist",
-    why: "פוטנציאל קיים, אבל צריך reclaim ברור",
-  },
-  {
-    ticker: "PLUG",
-    name: "Plug Power",
-    color: "red",
-    score: 38,
-    setup: "Weak structure",
-    why: "מבנה חלש, עליות נמכרות מהר",
-  },
+  { ticker: "FOSL", price: 4.82, change: 6.4, volume: "HIGH", score: 84, setup: "Pullback Continuation", status: "GREEN" },
+  { ticker: "UUUU", price: 5.11, change: 2.1, volume: "MID", score: 67, setup: "Base Building", status: "YELLOW" },
+  { ticker: "NVAX", price: 8.55, change: -1.0, volume: "LOW", score: 61, setup: "Watch / Reclaim", status: "YELLOW" },
+  { ticker: "PLUG", price: 1.02, change: -5.2, volume: "HIGH", score: 38, setup: "Weak Structure", status: "RED" },
 ];
 
 export default function App() {
   return (
-    <div className="app">
-      <h1>Freedom Trading Scanner</h1>
-      <p>מניות חמות לפי השיטה שלך: ירוק / צהוב / אדום</p>
-
-      <div className="grid">
-        {stocks.map((s) => (
-          <div key={s.ticker} className={`scanner-card ${s.color}`}>
-            <div className="top">
-              <h2>{s.ticker}</h2>
-              <span>{s.color === "green" ? "🟢 GREEN" : s.color === "yellow" ? "🟡 YELLOW" : "🔴 RED"}</span>
-            </div>
-
-            <p className="name">{s.name}</p>
-            <p className="score">Score: {s.score}/100</p>
-            <p><b>Setup:</b> {s.setup}</p>
-            <p className="why">{s.why}</p>
-          </div>
-        ))}
+    <div className="terminal">
+      <div className="header">
+        <div>
+          <h1>Freedom Trading Scanner</h1>
+          <p>Bloomberg Pro Mode · Igor Strategy</p>
+        </div>
+        <div className="badge">IGOR MODE: ON</div>
       </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Volume</th>
+            <th>Score</th>
+            <th>Setup</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {stocks.map((s) => (
+            <tr key={s.ticker}>
+              <td className="ticker">{s.ticker}</td>
+              <td>${s.price.toFixed(2)}</td>
+              <td className={s.change >= 0 ? "up" : "down"}>
+                {s.change >= 0 ? "+" : ""}
+                {s.change.toFixed(1)}%
+              </td>
+              <td>{s.volume}</td>
+              <td>{s.score}/100</td>
+              <td>{s.setup}</td>
+              <td className={`status ${s.status.toLowerCase()}`}>{s.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
