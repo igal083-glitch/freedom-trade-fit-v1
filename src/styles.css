@@ -1,85 +1,115 @@
 body {
   margin: 0;
-  background: #050505;
-  color: white;
-  font-family: Arial, sans-serif;
+  background: #000;
+  color: #e5e5e5;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.app {
+.terminal {
+  padding: 36px;
   min-height: 100vh;
-  padding: 48px;
 }
 
-h1 {
-  color: #facc15;
-  font-size: 54px;
-  margin-bottom: 8px;
-}
-
-p {
-  color: #cfcfcf;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  margin-top: 35px;
-}
-
-.scanner-card {
-  background: #111;
-  border-radius: 24px;
-  padding: 26px;
-  border: 1px solid #333;
-}
-
-.scanner-card.green {
-  border-color: #22c55e;
-}
-
-.scanner-card.yellow {
-  border-color: #facc15;
-}
-
-.scanner-card.red {
-  border-color: #ef4444;
-}
-
-.top {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 28px;
 }
 
-.top h2 {
-  font-size: 34px;
+h1 {
   margin: 0;
+  font-size: 44px;
+  color: #ffb000;
 }
 
-.name {
-  color: #999;
+.header p {
+  margin-top: 8px;
+  color: #8a8a8a;
 }
 
-.score {
-  font-size: 22px;
+.badge {
+  background: #111;
+  border: 1px solid #ffb000;
+  color: #ffb000;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #050505;
+  border: 1px solid #222;
+}
+
+th {
+  text-align: left;
+  color: #ffb000;
+  font-size: 14px;
+  padding: 14px;
+  border-bottom: 1px solid #222;
+  background: #0b0b0b;
+}
+
+td {
+  padding: 14px;
+  border-bottom: 1px solid #151515;
+}
+
+tr:hover {
+  background: #0d0d0d;
+}
+
+.ticker {
   font-weight: bold;
   color: white;
 }
 
-.why {
-  color: #d6d6d6;
-  line-height: 1.5;
+.up {
+  color: #22c55e;
+  font-weight: bold;
 }
 
-@media (max-width: 1000px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+.down {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.green {
+  color: #22c55e;
+}
+
+.status.yellow {
+  color: #facc15;
+}
+
+.status.red {
+  color: #ef4444;
+}
+
+@media (max-width: 900px) {
+  table {
+    font-size: 13px;
   }
-}
 
-@media (max-width: 650px) {
-  .grid {
-    grid-template-columns: 1fr;
+  th,
+  td {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
   }
 }
